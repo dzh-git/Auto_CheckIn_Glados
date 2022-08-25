@@ -18,4 +18,4 @@ jobs:
     
     - name: Checkin
       run: |
-        python3 checkin.py 
+        python3 check_in.py 
