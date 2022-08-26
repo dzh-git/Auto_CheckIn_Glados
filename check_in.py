@@ -1,13 +1,13 @@
 #coding=gb18030
 import requests,json,os
 
-# server½´¿ª¹Ø£¬Ìîoff²»¿ªÆô(Ä¬ÈÏ)£¬ÌîonÍ¬Ê±¿ªÆôcookieÊ§Ğ§Í¨ÖªºÍÇ©µ½³É¹¦Í¨Öª
-sever = 'on'
+# serveré…±å¼€å…³ï¼Œå¡«offä¸å¼€å¯(é»˜è®¤)ï¼Œå¡«onåŒæ—¶å¼€å¯cookieå¤±æ•ˆé€šçŸ¥å’Œç­¾åˆ°æˆåŠŸé€šçŸ¥
+# sever = 'off'
 
-# ÌîĞ´server½´sckey,²»¿ªÆôserver½´Ôò²»ÓÃÌî
+# å¡«å†™serveré…±sckey,ä¸å¼€å¯serveré…±åˆ™ä¸ç”¨å¡«
 sckey = 'on'
 
-# ÌîÈëgladosÕËºÅ¶ÔÓ¦cookie
+# å¡«å…¥gladosè´¦å·å¯¹åº”cookie
 cookie = '_ga=GA1.2.118034753.1655121120; koa:sess=eyJ1c2VySWQiOjE3MjA1OCwiX2V4cGlyZSI6MTY4MTcxOTkwNzcxNiwiX21heEFnZSI6MjU5MjAwMDAwMDB9; koa:sess.sig=t6-2eHj-wx0LtD5SQNikWmNPGFw; _gid=GA1.2.768372009.1660044450; Cookie=enabled; Cookie.sig=lbtpENsrE0x6riM8PFTvoh9nepc; __cf_bm=L_ug2R4CGCAPYBk50xNSdnqjKFXqmCFniy_ZkBTQBbk-1660112867-0-ActA93md1RzAltix4iGkMsJeRzTNPxZ3n95lkoiPzVfgL5X5nu2whIIHyXoX151ZKbi8wtwWsME8D5pUo9Hz8hvskeXaeMxGaITEiNQGHx5HIPsGjg1xSXbCY/JzU1LtZA==; _gat_gtag_UA_104464600_2=1'
 
 def start():
@@ -32,9 +32,9 @@ def start():
         time = time.split('.')[0]
         print(time)
         if sever == 'on':
-            requests.get('https://sc.ftqq.com/' + sckey + '.send?text='+mess+'£¬you have '+time+' days left')
+            requests.get('https://sc.ftqq.com/' + sckey + '.send?text='+mess+'ï¼Œyou have '+time+' days left')
     else:
-        requests.get('https://sc.ftqq.com/' + sckey + '.send?text=cookie¹ıÆÚ')
+        requests.get('https://sc.ftqq.com/' + sckey + '.send?text=cookieè¿‡æœŸ')
 
 def main_handler(event, context):
   return start()
