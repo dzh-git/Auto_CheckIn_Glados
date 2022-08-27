@@ -1,3 +1,4 @@
+#coding=gb18030
 import requests,json,os
 
 # server酱开关，填off不开启(默认)，填on同时开启cookie失效通知和签到成功通知
@@ -13,8 +14,6 @@ def start():
     url= "https://glados.rocks/api/user/checkin"
     url2= "https://glados.rocks/api/user/status"
     referer = 'https://glados.rocks/console/checkin'
-    #checkin = requests.post(url,headers={'cookie': cookie ,'referer': referer })
-    #state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer})
     origin = "https://glados.rocks"
     useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36 Edg/104.0.1293.47"
     payload={
@@ -22,14 +21,14 @@ def start():
     }
     checkin = requests.post(url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent,'content-type':'application/json;charset=UTF-8'},data=json.dumps(payload))
     state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
-   # print(res)
+    print(checkin)
+    print(state)
 
 
     if 'message' in checkin.text:
         mess = checkin.json()['message']
         time = state.json()['data']['leftDays']
         time = time.split('.')[0]
-        print(time)
         if sever == 'on':
             requests.get('https://sc.ftqq.com/' + sckey + '.send?text='+mess+'，you have '+time+' days left')
     else:
@@ -40,3 +39,4 @@ def main_handler(event, context):
 
 if __name__ == '__main__':
     start()
+
